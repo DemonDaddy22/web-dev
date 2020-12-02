@@ -35,9 +35,13 @@ const setResults = (scoreOne, scoreTwo) => {
     if (scoreOne === parseInt(rounds)) {
         playerOneScore.classList.add('winner');
         playerTwoScore.classList.add('loser');
+        playerOne.disabled = true;
+        playerTwo.disabled = true;
     } else if (scoreTwo === parseInt(rounds)) {
         playerOneScore.classList.add('loser');
         playerTwoScore.classList.add('winner');
+        playerOne.disabled = true;
+        playerTwo.disabled = true;
     }
 }
 
@@ -48,10 +52,10 @@ const setPlayerTwoScore = score => playerTwoScore.textContent = score;
 const resetGame = () => {
     scoreOne = 0;
     scoreTwo = 0;
+    playerOne.disabled = false;
+    playerTwo.disabled = false;
     playerOneScore.textContent = scoreOne;
     playerTwoScore.textContent = scoreTwo;
-    playerOneScore.classList.remove('winner');
-    playerOneScore.classList.remove('loser');
-    playerTwoScore.classList.remove('winner');
-    playerTwoScore.classList.remove('loser');
+    playerOneScore.classList.remove('winner', 'loser');
+    playerTwoScore.classList.remove('winner', 'loser');
 }
