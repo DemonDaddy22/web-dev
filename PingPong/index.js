@@ -8,25 +8,44 @@ let playerTwoScore = document.querySelector('#player-two-score');
 let rounds = select.value;
 let [scoreOne, scoreTwo] = [0, 0];
 
-select.addEventListener('change', e => rounds = e.target.value);
+select.addEventListener('change', e => {
+    rounds = e.target.value;
+    resetGame();
+});
 
 playerOne.addEventListener('click', e => {
-    if (scoreOne + scoreTwo === parseInt(rounds)) return;
-    
+    if (scoreOne === parseInt(rounds) || scoreTwo === parseInt(rounds)) return;
+
     scoreOne += 1;
     playerOneScore.textContent = scoreOne;
     setResults(scoreOne, scoreTwo);
 });
 
 playerTwo.addEventListener('click', e => {
-    if (scoreOne + scoreTwo === parseInt(rounds)) return;
-    
+    if (scoreOne === parseInt(rounds) || scoreTwo === parseInt(rounds)) return;
+
     scoreTwo += 1;
     playerTwoScore.textContent = scoreTwo;
     setResults(scoreOne, scoreTwo);
 });
 
-reset.addEventListener('click', e => {
+reset.addEventListener('click', () => resetGame());
+
+const setResults = (scoreOne, scoreTwo) => {
+    if (scoreOne === parseInt(rounds)) {
+        playerOneScore.classList.add('winner');
+        playerTwoScore.classList.add('loser');
+    } else if (scoreTwo === parseInt(rounds)) {
+        playerOneScore.classList.add('loser');
+        playerTwoScore.classList.add('winner');
+    }
+}
+
+const setPlayerOneScore = score => playerOneScore.textContent = score;
+
+const setPlayerTwoScore = score => playerTwoScore.textContent = score;
+
+const resetGame = () => {
     scoreOne = 0;
     scoreTwo = 0;
     playerOneScore.textContent = scoreOne;
@@ -35,20 +54,4 @@ reset.addEventListener('click', e => {
     playerOneScore.classList.remove('loser');
     playerTwoScore.classList.remove('winner');
     playerTwoScore.classList.remove('loser');
-})
-
-const setResults = (scoreOne, scoreTwo) => {
-    if (scoreOne + scoreTwo === parseInt(rounds)) {
-        if (scoreOne > scoreTwo) {
-            playerOneScore.classList.add('winner');
-            playerTwoScore.classList.add('loser');
-        } else {
-            playerOneScore.classList.add('loser');
-            playerTwoScore.classList.add('winner');
-        }
-    }
 }
-
-const setPlayerOneScore = score => playerOneScore.textContent = score;
-
-const setPlayerTwoScore = score => playerTwoScore.textContent = score;

@@ -12,29 +12,8 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.card-image {
-    width: 100%;
-    display: block;
-}
-
-.title {
-    font-weight: 600;
-    margin: 0.5rem auto;
-}
-
-.divider {
-    height: 1px;
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-#game {
-    padding: 1rem 0;
-}
-
 .scorecard {
     display: flex;
-    font-weight: 600;
-    font-size: 1.5rem;
     color: #272727;
     letter-spacing: 0.25px;
 }
@@ -59,45 +38,4 @@ body {
     color: #777777;
     font-size: 0.8rem;
     margin: 0.5rem 0;
-}
-
-.select-wrapper {
-    display: flex;
-    color: #272727;
-    margin: 0.5rem 0;
-}
-
-#select-rounds {
-    margin-left: 0.5rem;
-}
-
-.buttons-wrapper {
-    display: flex;
-}
-
-.button {
-    padding: 0.5rem 0.75rem;
-    background-color: transparent;
-    border: 0;
-    font-size: 0.8rem;
-    letter-spacing: -0.25px;
-    text-transform: uppercase;
-    color: #000;
-}
-
-.button-one, .button-two, .button-reset {
-    flex: 1;
-    color: #FFF;
-}
-
-.button-one {
-    background-color: rgb(58, 199, 157);
-}
-
-.button-two {
-    background-color: rgb(53, 115, 207);
-}
-
-.button-reset {
-    background-color: rgb(202, 15, 87);
 }
