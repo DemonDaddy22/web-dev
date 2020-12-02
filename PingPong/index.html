@@ -5,37 +5,44 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
         <link href="./index.css" rel="stylesheet">
     </head>
 
     <body>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1576617497557-22895ee5930b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-                alt="pingpong" class="card-image">
-            <div class="title">Ping Pong Score Keeper</div>
-            <div class="divider"></div>
-            <div id="game">
-                <div class="scorecard">
-                    <div class="score" id="player-one-score">0</div>
-                    to
-                    <div class="score" id="player-two-score">0</div>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half is-offset-one-quarter">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1576617497557-22895ee5930b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+                            alt="pingpong" class="card-image">
+                        <div class="title">Ping Pong Score Keeper</div>
+                        <div class="divider"></div>
+                        <div id="game">
+                            <div class="scorecard">
+                                <div class="score" id="player-one-score">0</div>
+                                to
+                                <div class="score" id="player-two-score">0</div>
+                            </div>
+                            <p class="info">Use the buttons below to keep score</p>
+                            <div class="select-wrapper">
+                                Playing to
+                                <select id="select-rounds">
+                                    <option>5</option>
+                                    <option>7</option>
+                                    <option>9</option>
+                                    <option>11</option>
+                                    <option>13</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="buttons-wrapper">
+                            <button class="button button-one">Player One</button>
+                            <button class="button button-two">Player Two</button>
+                            <button class="button button-reset">Reset</button>
+                        </div>
+                    </div>
                 </div>
-                <p class="info">Use the buttons below to keep score</p>
-                <div class="select-wrapper">
-                    Playing to
-                    <select id="select-rounds">
-                        <option>5</option>
-                        <option>7</option>
-                        <option>9</option>
-                        <option>11</option>
-                        <option>13</option>
-                    </select>
-                </div>
-            </div>
-            <div class="buttons-wrapper">
-                <button class="button button-one">Player One</button>
-                <button class="button button-two">Player Two</button>
-                <button class="button button-reset">Reset</button>
             </div>
         </div>
         <script src="./index.js"></script>

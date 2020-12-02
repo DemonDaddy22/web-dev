@@ -27,14 +27,14 @@ playerTwo.addEventListener('click', e => {
 });
 
 reset.addEventListener('click', e => {
-    playerOneScore.classList.remove('winner');
-    playerOneScore.classList.remove('loser');
-    playerTwoScore.classList.remove('winner');
-    playerTwoScore.classList.remove('loser');
     scoreOne = 0;
     scoreTwo = 0;
     playerOneScore.textContent = scoreOne;
     playerTwoScore.textContent = scoreTwo;
+    playerOneScore.classList.remove('winner');
+    playerOneScore.classList.remove('loser');
+    playerTwoScore.classList.remove('winner');
+    playerTwoScore.classList.remove('loser');
 })
 
 const setResults = (scoreOne, scoreTwo) => {
