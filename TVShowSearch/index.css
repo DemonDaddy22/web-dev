@@ -84,4 +84,29 @@ button:hover, button:focus, button:active {
   -webkit-box-shadow: 0 0 6px #ff78a3b6;
           box-shadow: 0 0 6px #ff78a3b6;
 }
+
+.showContainer {
+  margin-top: 1rem;
+  border-radius: 4px;
+  border: 1px solid #666666;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.col-1 {
+  padding: 1rem;
+}
+
+.col-2 {
+  padding: 1rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.poster {
+  display: block;
+  width: 100%;
+}
 /*# sourceMappingURL=index.css.map */
