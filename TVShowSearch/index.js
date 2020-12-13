@@ -9,10 +9,7 @@ form.addEventListener('submit', async e => {
     console.log(fetchedShows);
 
     shows.innerHTML = '';
-    fetchedShows.forEach(show => {
-        // TODO - getShowContent for each show
-        shows.append(getShowContent(show));
-    });
+    fetchedShows.forEach(show => shows.append(getShowContent(show)));
 });
 
 const fetchShows = async query => {
@@ -25,7 +22,6 @@ const getShowContent = show => {
     const showContainer = document.createElement('div');
     showContainer.classList.add('showContainer');
 
-    // TODO - add column for image
     const col1 = document.createElement('div');
     col1.classList.add('col-1');
     
@@ -37,7 +33,6 @@ const getShowContent = show => {
     col1.append(image);
     showContainer.append(col1);
 
-    // TODO - add column for content
     const col2 = document.createElement('div');
     col2.classList.add('col-2');
     
