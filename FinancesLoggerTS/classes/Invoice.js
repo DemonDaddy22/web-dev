@@ -2,14 +2,12 @@
 export const __esModule = true;
 var Invoice = /** @class */ (function () {
     // works only when we have specified access modifiers
-    class Invoice {
-        constructor(client, details, amount) {
-            var _this = this;
-            this.client = client;
-            this.details = details;
-            this.amount = amount;
-            this.format = function () { return _this.client + " owes \u00A3" + _this.amount + " for " + _this.details; };
-        }
+    function Invoice(client, details, amount) {
+        var _this = this;
+        this.client = client;
+        this.details = details;
+        this.amount = amount;
+        this.format = function () { return _this.client + " owes \u00A3" + _this.amount + " for " + _this.details; };
     }
     return Invoice;
 }());
