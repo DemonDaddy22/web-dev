@@ -1,4 +1,11 @@
 "use strict";
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 export const __esModule = true;
 import { Invoice } from "./classes/Invoice.js";
 import { ListTemplate } from "./classes/ListTemplate.js";
@@ -12,10 +19,9 @@ var ul = document.querySelector('ul');
 var list = new ListTemplate(ul);
 form.addEventListener('submit', function (e) {
     e.preventDefault();
+    var values = [toFrom.value, details.value, amount.valueAsNumber];
     var doc;
-    doc = type.value === 'invoice' ?
-        new Invoice(toFrom.value, details.value, amount.valueAsNumber) :
-        new Payment(toFrom.value, details.value, amount.valueAsNumber);
+    doc = type.value === 'invoice' ? new (Invoice.bind.apply(Invoice, __spreadArrays([void 0], values)))() : new (Payment.bind.apply(Payment, __spreadArrays([void 0], values)))();
     list.render(doc, type.value, 'end');
 });
 // const anchor = document.querySelector('a')!;
