@@ -41,7 +41,7 @@ html, body {
     height: 100%;
     border: 5px solid #fff;
     position: absolute;
-    left: 75%;
+    left: 90%;
 }
 
 .vehicle {
@@ -56,19 +56,19 @@ html, body {
 }
 
 .mario {
-    animation: drive 2.8s ease forwards;
+    animation: drive 4.9s ease infinite both;
 }
 
 .luigi {
-    animation: drive 3s ease forwards;
+    animation: drive 5s ease infinite both;
 }
 
 @keyframes drive {
     from {
-        transform: translateX(0);
+        transform: translateX(-300px);
     }
     to {
-        transform: translateX(76vw);
+        transform: translateX(140vw);
     }
 }
 
@@ -77,13 +77,13 @@ html, body {
         transform: translateY(0);
     }
     25% {
-        transform: translateY(-0.5px);
+        transform: translateY(-1px);
     }
     50% {
         transform: translateY(0);
     }
     75% {
-        transform: translateY(0.5px);
+        transform: translateY(1px);
     }
     100% {
         transform: translateY(0);
