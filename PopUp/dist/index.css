@@ -22,10 +22,12 @@ p {
 
 #pop-up {
   position: relative;
-  top: 200px;
+  top: -400px;
   width: 500px;
   margin: 0 auto;
   text-align: center;
+  transform-origin: 10px 10px;
+  animation: bounce 1s cubic-bezier(0.67, -0.03, 0.96, 0.78) both, swing 2.5s 3s ease both, drop 1.5s 6s ease-out both;
 }
 #pop-up .container {
   background: #f0e4d4;
@@ -66,4 +68,59 @@ button {
   height: 22px;
   text-align: center;
   border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 0 5px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes bounce {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    top: 300px;
+  }
+  65% {
+    top: 175px;
+  }
+  80% {
+    top: 300px;
+  }
+  92% {
+    top: 250px;
+  }
+  100% {
+    top: 300px;
+    opacity: 1;
+  }
+}
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  45% {
+    transform: rotate(90deg);
+  }
+  75% {
+    transform: rotate(80deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+@keyframes drop {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.01;
+  }
+  100% {
+    opacity: 0;
+    top: 900px;
+  }
 }
