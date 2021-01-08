@@ -25,6 +25,8 @@ html, body {
 .cloud:nth-of-type(1) {
     top: 10%;
     left: 10%;
+    opacity: 1;
+    z-index: 30;
     transform: scale(1.1, 0.95);
     animation: wind 60s linear infinite reverse both;
 }
@@ -33,6 +35,7 @@ html, body {
     top: 35%;
     left: 40%;
     opacity: 0.5;
+    z-index: 10;
     transform: scale(1.25, 0.9);
     animation: wind 125s linear 20s infinite reverse both;
 }
@@ -41,6 +44,7 @@ html, body {
     top: 2%;
     left: 70%;
     opacity: 0.75;
+    z-index: 20;
     transform: scale(1.15, 1.01);
     animation: wind 100s linear 8s infinite reverse both;
 }
