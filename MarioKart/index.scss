@@ -1,3 +1,7 @@
+@mixin transformImage($translateX, $scaleX, $scaleY) {
+    transform: translateX($translateX) scaleX($scaleX) scaleY($scaleY);
+}
+
 html, body {
     height: 100%;
     width: 100%;
@@ -12,6 +16,33 @@ html, body {
 .sky {
     height: 40%;
     background: skyblue;
+}
+
+.cloud {
+    position: absolute;
+}
+
+.cloud:nth-of-type(1) {
+    top: 10%;
+    left: 10%;
+    transform: scale(1.1, 0.95);
+    animation: wind 60s linear infinite reverse both;
+}
+
+.cloud:nth-of-type(2) {
+    top: 35%;
+    left: 40%;
+    opacity: 0.5;
+    transform: scale(1.25, 0.9);
+    animation: wind 125s linear 20s infinite reverse both;
+}
+
+.cloud:nth-of-type(3) {
+    top: 2%;
+    left: 70%;
+    opacity: 0.75;
+    transform: scale(1.15, 1.01);
+    animation: wind 100s linear 8s infinite reverse both;
 }
 
 .grass {
@@ -56,32 +87,37 @@ html, body {
 }
 
 .mario {
-    animation: marioDrive 5s ease infinite both;
+    animation-name: marioDrive;
+    animation-duration: 5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
 }
 
 .luigi {
-    animation: luigiDrive 7.5s ease infinite both reverse;
-}
-
-@mixin transformImage($translateX, $scaleX) {
-    transform: translateX($translateX) scaleX($scaleX);
+    animation-name: luigiDrive;
+    animation-duration: 5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
 }
 
 @keyframes marioDrive {
     from {
-        @include transformImage(-400px, 1);
+        @include transformImage(-400px, 1, 1);
     }
     to {
-        @include transformImage(140vw, 1);
+        @include transformImage(140vw, 1, 1);
     }
 }
 
 @keyframes luigiDrive {
     from {
-        @include transformImage(-300px, -1);
+        @include transformImage(-300px, -1, 1);
     }
     to {
-        @include transformImage(140vw, -1);
+        @include transformImage(140vw, -1, 1);
     }
 }
 
@@ -100,5 +136,14 @@ html, body {
     }
     100% {
         transform: translateY(0);
+    }
+}
+
+@keyframes wind {
+    from {
+        left: -300px;
+    }
+    to {
+        left: 105%;
     }
 }

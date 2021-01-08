@@ -14,6 +14,33 @@ html, body {
   background: skyblue;
 }
 
+.cloud {
+  position: absolute;
+}
+
+.cloud:nth-of-type(1) {
+  top: 10%;
+  left: 10%;
+  transform: scale(1.1, 0.95);
+  animation: wind 60s linear infinite reverse both;
+}
+
+.cloud:nth-of-type(2) {
+  top: 35%;
+  left: 40%;
+  opacity: 0.5;
+  transform: scale(1.25, 0.9);
+  animation: wind 125s linear 20s infinite reverse both;
+}
+
+.cloud:nth-of-type(3) {
+  top: 2%;
+  left: 70%;
+  opacity: 0.75;
+  transform: scale(1.15, 1.01);
+  animation: wind 100s linear 8s infinite reverse both;
+}
+
 .grass {
   height: 30%;
   background: seagreen;
@@ -56,27 +83,36 @@ html, body {
 }
 
 .mario {
-  animation: marioDrive 5s ease infinite both;
+  animation-name: marioDrive;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
 }
 
 .luigi {
-  animation: luigiDrive 7.5s ease infinite both reverse;
+  animation-name: luigiDrive;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
 }
 
 @keyframes marioDrive {
   from {
-    transform: translateX(-400px) scaleX(1);
+    transform: translateX(-400px) scaleX(1) scaleY(1);
   }
   to {
-    transform: translateX(140vw) scaleX(1);
+    transform: translateX(140vw) scaleX(1) scaleY(1);
   }
 }
 @keyframes luigiDrive {
   from {
-    transform: translateX(-300px) scaleX(-1);
+    transform: translateX(-300px) scaleX(-1) scaleY(1);
   }
   to {
-    transform: translateX(140vw) scaleX(-1);
+    transform: translateX(140vw) scaleX(-1) scaleY(1);
   }
 }
 @keyframes updown {
@@ -94,5 +130,13 @@ html, body {
   }
   100% {
     transform: translateY(0);
+  }
+}
+@keyframes wind {
+  from {
+    left: -300px;
+  }
+  to {
+    left: 105%;
   }
 }
