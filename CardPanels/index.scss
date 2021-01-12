@@ -1,0 +1,76 @@
+$animation-duration: 0.25s;
+
+body {
+    background: #333;
+    font-family: verdana;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+h1 {
+    color: #fff;
+    font-weight: normal;
+    text-align: center;
+    font-size: 48px;
+}
+
+.panels {
+    list-style-type: none;
+    padding: 0;
+
+    & li {
+        position: relative;
+        width: 25%;
+        margin: 0;
+        display: block;
+        box-sizing: border-box;
+        float: left;
+
+        & div {
+            width: 100%;
+            padding: 50% 0;
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 0;
+            cursor: pointer;
+        }
+
+        &:hover div {
+            &.front {
+                animation: twirl $animation-duration ease-in forwards;
+            }
+
+            &.back {
+                animation: twirl $animation-duration $animation-duration ease-out forwards reverse;
+            }
+        }
+    }
+
+    & div {
+        &.back {
+            transform: rotateY(90deg);
+        }
+
+        &.front {
+            position: absolute;
+            transform: rotateY(0deg);
+        }
+    }
+}
+
+@keyframes twirl {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(90deg);
+    }
+}
