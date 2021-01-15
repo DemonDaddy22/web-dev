@@ -5,32 +5,45 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 
 const readFile = file => fs.readFileSync(__dirname + '/' + file, { encoding: 'utf8' });
+const writeToFile = (file, data) => fs.writeFile(__dirname + '/' + file, data, { encoding: 'utf8' }, err => {
+    if (err) console.error(err);
+    else console.log('File written successfully');
+});
+
+const FILE = 'data.json';
 
 app.get('/posts', (req, res) => {
-    let posts = readFile('data.json');
+    let posts = readFile(FILE);
     res.status(200).send(JSON.parse(posts));
 });
 
 app.post('/posts', (req, res) => {
     const { content } = req.body;
+    let posts = JSON.parse(readFile(FILE));
 
     const newPost = {
-        id: data.data[data.data.length - 1].id + 1,
+        id: posts.data[posts.data.length - 1].id + 1,
         content,
         upvotes: 0,
         downvotes: 0,
         comments: []
     };
 
-    data.data.push(newPost);
+    posts.data.push(newPost);
+    writeToFile(FILE, JSON.stringify(posts));
 
     res.status(200).send({ data: newPost });
 });
 
 app.get('/posts/:id', (req, res) => {
     const { id } = req.params;
+    if (isNaN(id)) res.status(400).send({
+        data: `ID must be a valid number`
+    });
 
-    const post = data.data.filter(post => post.id === parseInt(id));
+    let posts = JSON.parse(readFile(FILE));
+
+    const post = posts.data.filter(post => post.id === parseInt(id));
 
     if (!post.length) res.status(200).send({
         data: post
@@ -43,17 +56,29 @@ app.get('/posts/:id', (req, res) => {
 
 app.put('/posts/:id', (req, res) => {
     const { id } = req.params;
+    if (isNaN(id)) res.status(400).send({
+        data: `ID must be a valid number`
+    });
+
+    let posts = JSON.parse(readFile(FILE));
 
     const { content, upvotes, downvotes, comments } = req.body;
-    const post = data.data.filter(post => post.id === parseInt(id));
+    const post = posts.data.filter(post => post.id === parseInt(id));
 
     if (!post.length) res.status(404).send({
         data: `No post found for id: ${id}`
     });
 
-    const updatedPost = { id: post.id, content, upvotes, downvotes, comments };
+    const updatedPost = { 
+        ...post[0],
+        content: content || post[0].content,
+        upvotes: upvotes || post[0].upvotes,
+        downvotes: downvotes || post[0].downvotes,
+        comments: comments || [...post[0].comments]
+    };
 
-    data.data = data.data.map(post => post.id === parseInt(id) ? updatedPost : post);
+    posts.data = posts.data.map(post => post.id === parseInt(id) ? updatedPost : post);
+    writeToFile(FILE, JSON.stringify(posts));
 
     res.status(200).send({
         data: updatedPost
