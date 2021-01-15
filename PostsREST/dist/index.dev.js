@@ -96,7 +96,7 @@ app.put('/posts/:id', function (req, res) {
     content: content || post[0].content,
     upvotes: upvotes || post[0].upvotes,
     downvotes: downvotes || post[0].downvotes,
-    comments: comments || _toConsumableArray(post[0].comments)
+    comments: comments ? JSON.parse(comments) : _toConsumableArray(post[0].comments)
   });
 
   posts.data = posts.data.map(function (post) {
@@ -106,6 +106,18 @@ app.put('/posts/:id', function (req, res) {
   res.status(200).send({
     data: updatedPost
   });
+});
+app["delete"]('/posts/:id', function (req, res) {
+  var id = req.params.id;
+  if (isNaN(id)) res.status(400).send({
+    data: "ID must be a valid number"
+  });
+  var posts = JSON.parse(readFile(FILE));
+  posts.data = posts.data.filter(function (post) {
+    return post.id !== parseInt(id);
+  });
+  writeToFile(FILE, JSON.stringify(posts));
+  res.sendStatus(200);
 });
 app.listen(8080, function (req, res) {
   return console.log('> App started...');

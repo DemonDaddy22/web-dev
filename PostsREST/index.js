@@ -74,7 +74,7 @@ app.put('/posts/:id', (req, res) => {
         content: content || post[0].content,
         upvotes: upvotes || post[0].upvotes,
         downvotes: downvotes || post[0].downvotes,
-        comments: comments || [...post[0].comments]
+        comments: comments ? JSON.parse(comments) : [...post[0].comments]
     };
 
     posts.data = posts.data.map(post => post.id === parseInt(id) ? updatedPost : post);
@@ -83,6 +83,20 @@ app.put('/posts/:id', (req, res) => {
     res.status(200).send({
         data: updatedPost
     });
+});
+
+app.delete('/posts/:id', (req, res) => {
+    const { id } = req.params;
+    if (isNaN(id)) res.status(400).send({
+        data: `ID must be a valid number`
+    });
+
+    let posts = JSON.parse(readFile(FILE));
+    posts.data = posts.data.filter(post => post.id !== parseInt(id));
+
+    writeToFile(FILE, JSON.stringify(posts));
+
+    res.sendStatus(200);
 });
 
 app.listen(8080, (req, res) => console.log('> App started...'));
