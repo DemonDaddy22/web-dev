@@ -1,0 +1,14 @@
+body {
+  max-width: 960px;
+  margin: 200px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+/* spinner */
+/* bouncing balls */
+/* flipping squares */
+/*# sourceMappingURL=index.css.map */
