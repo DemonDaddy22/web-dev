@@ -30,20 +30,18 @@ body {
           box-sizing: border-box;
   border-radius: 50%;
   border: 8px solid transparent;
-  border-top-color: #ad60f5;
+  border-top-color: #c181fc;
   -webkit-animation: spinnerOne 1s linear infinite forwards;
           animation: spinnerOne 1s linear infinite forwards;
 }
 
 .spinner div:nth-child(2) {
   border: 2px solid transparent;
-  border-bottom-color: #ad60f5;
+  border-bottom-color: #c181fc;
   -webkit-animation: spinnerTwo 1s linear infinite forwards;
           animation: spinnerTwo 1s linear infinite forwards;
 }
 
-/* bouncing balls */
-/* flipping squares */
 @-webkit-keyframes spinnerOne {
   0% {
     -webkit-transform: rotate(0);
@@ -61,6 +59,7 @@ body {
     border-width: 8px;
   }
 }
+
 @keyframes spinnerOne {
   0% {
     -webkit-transform: rotate(0);
@@ -114,4 +113,69 @@ body {
     border-width: 2px;
   }
 }
+
+/* bouncing balls */
+.bouncing-balls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100px;
+  height: 100px;
+}
+
+.bouncing-balls div {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #60bef5;
+  -webkit-animation: bouncingAnimation 0.5s cubic-bezier(0.19, 0.57, 0.3, 0.98) infinite alternate;
+          animation: bouncingAnimation 0.5s cubic-bezier(0.19, 0.57, 0.3, 0.98) infinite alternate;
+}
+
+.bouncing-balls div:nth-child(2) {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+  opacity: 0.8;
+}
+
+.bouncing-balls div:nth-child(3) {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+  opacity: 0.6;
+}
+
+.bouncing-balls div:nth-child(4) {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  opacity: 0.4;
+}
+
+@-webkit-keyframes bouncingAnimation {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+  }
+}
+
+@keyframes bouncingAnimation {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+  }
+}
+
+/* flipping squares */
 /*# sourceMappingURL=index.css.map */
