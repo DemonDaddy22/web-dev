@@ -3,18 +3,20 @@ import { ThemeContext } from '../contexts/ThemeContext';
 
 export default class BookList extends React.Component {
 
-    static contextType = ThemeContext;
+    // static contextType = ThemeContext;
 
-    render = () => {
-        const { isLightTheme, light, dark } = this.context;
-        const theme = isLightTheme ? light : dark;
+    render = () => <ThemeContext.Consumer>
+        {context => {
+            const { isLightTheme, light, dark } = context;
+            const theme = isLightTheme ? light : dark;
 
-        return <div className='book-list' style={{ background: theme.bg, color: theme.syntax }}>
-            <ul>
-                <li style={{ background: theme.ui }}>The Way of Kings</li>
-                <li style={{ background: theme.ui }}>The Name of the Wind</li>
-                <li style={{ background: theme.ui }}>The Final Empire</li>
-            </ul>
-        </div>;
-    }
+            return <div className='book-list' style={{ background: theme.bg, color: theme.syntax }}>
+                <ul>
+                    <li style={{ background: theme.ui }}>The Way of Kings</li>
+                    <li style={{ background: theme.ui }}>The Name of the Wind</li>
+                    <li style={{ background: theme.ui }}>The Final Empire</li>
+                </ul>
+            </div>;
+        }}
+    </ThemeContext.Consumer>;
 }
