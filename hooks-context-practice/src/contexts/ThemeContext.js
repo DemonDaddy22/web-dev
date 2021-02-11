@@ -14,7 +14,9 @@ export default class ThemeContextProvider extends React.Component {
         }
     }
 
-    render = () => <ThemeContext.Provider value={{ ...this.state }}>
+    toggleTheme = () => this.setState({ isLightTheme: !this.state.isLightTheme });
+
+    render = () => <ThemeContext.Provider value={{ ...this.state, toggleTheme: this.toggleTheme }}>
         {this.props.children}
     </ThemeContext.Provider>
 }

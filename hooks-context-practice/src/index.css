@@ -43,3 +43,18 @@ nav ul li {
 	margin: 10px auto;
 	border-radius: 10px;
 }
+
+.theme-toggler {
+	border: 1px solid #212121;
+	border-radius: 4px;
+	background: none;
+	padding: 6px 12px;
+	color: #212121;
+	outline: none;
+	letter-spacing: 0.25px;
+	cursor: pointer;
+}
+
+.theme-toggler:hover {
+	box-shadow: 0 0 10px rgba(32, 32, 32, 0.25);
+}
