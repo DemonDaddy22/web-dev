@@ -7,10 +7,10 @@ export default class ThemeContextProvider extends React.Component {
     state = {
         isLightTheme: true,
         light: {
-            syntax: '#555', ui: '#ddd', bg: '#eee'
+            syntax: '#a8fe52', ui: '#129882', bg: '#1eb89737', body: '#cef8e7'
         },
         dark: {
-            syntax: '#ddd', ui: '#333', bg: '#555'
+            syntax: '#115647', ui: '#68ba92', bg: '#1eb89737', body: '#072720'
         }
     }
 
