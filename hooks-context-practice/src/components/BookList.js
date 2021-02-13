@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { BookContext } from '../contexts/BookContext';
 import { ThemeContext } from '../contexts/ThemeContext';
+import Bookform from './Bookform';
 
 const BookList = () => {
     const { books, addBook, removeBook } = useContext(BookContext);
@@ -8,9 +9,14 @@ const BookList = () => {
     const theme = isLightTheme ? light : dark;
 
     return <div className='book-list' style={{ background: theme.bg, color: theme.syntax }}>
-        <ul>
-            {books.map((book, index) => <li key={index} style={{ background: theme.ui }}>{book.title}</li>)}
-        </ul>
+        <Bookform />
+        {books.length ? <ul>
+            {books.map((book, index) => <li key={index} style={{ background: theme.ui }} onClick={() => removeBook(book.id)}>
+                <div className='title'>{book.title}</div>
+                <div className='author'>{book.author}</div>
+            </li>)}
+        </ul> :
+        <div style={{ color: theme.ui }}>Time to add some books to your list :)</div>}
     </div>;
 }
 

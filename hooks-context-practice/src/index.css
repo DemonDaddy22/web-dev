@@ -59,9 +59,27 @@ nav ul li {
 }
 
 .book-list li {
-	padding: 10px;
-	margin: 10px auto;
+	padding: 10px 16px;
+	margin: 10px 0;
 	border-radius: 10px;
+	text-align: left;
+}
+
+.book-list li:hover {
+	cursor: pointer;
+	text-decoration: line-through;
+	filter: brightness(0.9);
+}
+
+.title {
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+
+.author {
+	margin-top: 4px;
+	font-size: 0.85rem;
+	opacity: 0.9;
 }
 
 .theme-toggler {
@@ -77,4 +95,33 @@ nav ul li {
 
 .theme-toggler:hover {
 	box-shadow: 0 0 10px rgba(32, 32, 32, 0.25);
+}
+
+.form {
+	flex-wrap: wrap;
+	margin-bottom: 1rem;
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+}
+
+.form input[type='text'] {
+	flex: 1;
+	border: 2px solid;
+	background-color: transparent;
+	padding: 10px 16px;
+	border-radius: 4px;
+	outline: none;
+}
+
+input[type='text']::placeholder {
+	color: inherit;
+}
+
+.form button {
+	padding: 8px 16px;
+	border-radius: 4px;
+	outline: none;
+	cursor: pointer;
+	border: none;
 }
