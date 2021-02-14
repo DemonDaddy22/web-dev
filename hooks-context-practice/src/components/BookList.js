@@ -4,7 +4,7 @@ import { ThemeContext } from '../contexts/ThemeContext';
 import Bookform from './Bookform';
 
 const BookList = () => {
-    const { books, addBook, removeBook } = useContext(BookContext);
+    const { books, removeBook } = useContext(BookContext);
     const { isLightTheme, light, dark } = useContext(ThemeContext);
     const theme = isLightTheme ? light : dark;
 
