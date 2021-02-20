@@ -10,7 +10,7 @@ const { Navigator, Screen } = createStackNavigator();
 const AppNavigator = () => <NavigationContainer initialRouteName='Home'>
     <Navigator headerMode='screen'>
         <Screen name='Home' component={Home} />
-        <Screen name='Details' component={ReviewDetails} />
+        <Screen name='ReviewDetails' component={ReviewDetails} />
     </Navigator>
 </NavigationContainer>;
 

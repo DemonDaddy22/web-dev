@@ -9,5 +9,8 @@ export const globalStyles = StyleSheet.create({
     },
     textExtraBold: {
         fontFamily: 'Inter_800ExtraBold'
+    },
+    margin16: {
+        margin: 16
     }
 });
