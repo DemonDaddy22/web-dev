@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import Reviews from '../components/Reviews';
+import { globalStyles } from '../styles/GlobalStyles';
 
 const Home = React.memo(({ navigation }) => {
 
@@ -12,15 +13,9 @@ const Home = React.memo(({ navigation }) => {
         { title: 'Not So "Final" Fantasy', rating: 3, body: 'important luck bread offer among electricity use lose began nearly company pot past accident property with gain kill tea history government real snake needed', id: getRandomID() },
     ]);
 
-    return <View style={styles.container}>
-        <Reviews reviews={reviews} />
+    return <View style={globalStyles.container}>
+        <Reviews reviews={reviews} navigation={navigation} />
     </View>
-});
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 40
-    }
 });
 
 export default Home;

@@ -1,6 +1,16 @@
 import { StyleSheet } from 'react-native';
 
 export const globalStyles = StyleSheet.create({
+    container: {
+        padding: 40,
+        flex: 1,
+        backgroundColor: '#212121'
+    },
+    center: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     textRegular: {
         fontFamily: 'Inter_400Regular'
     },
@@ -12,5 +22,13 @@ export const globalStyles = StyleSheet.create({
     },
     margin16: {
         margin: 16
+    },
+    padding16: {
+        padding: 16
+    },
+    flexRow: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
     }
 });
