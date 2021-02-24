@@ -41,7 +41,12 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderRadius: 4,
         borderColor: '#d91d544f',
-        marginBottom: 16
+        marginBottom: 16,
+        elevation: 2,
+        shadowColor: '#fff',
+        shadowOffset: { width: 1, height: 1 },
+        shadowOpacity: 0.2,
+        shadowRadius: 1
     },
     title: {
         fontSize: 20,
