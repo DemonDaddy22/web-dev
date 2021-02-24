@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import Reviews from '../components/Reviews';
 import { globalStyles } from '../styles/GlobalStyles';
+import FormModal from '../components/FormModal';
 
 const Home = React.memo(({ navigation }) => {
+
+    const [modalOpen, setModalOpen] = useState(false);
 
     const getRandomID = (offset = 1000) => Math.floor(Math.random() * new Date().getTime() + Math.random() * offset);
 
@@ -14,8 +18,17 @@ const Home = React.memo(({ navigation }) => {
     ]);
 
     return <View style={globalStyles.container}>
+        <MaterialIcons name='add' size={24} color='#f7f7f7' style={styles.addButton} onPress={() => setModalOpen(true)} />
+        <FormModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
         <Reviews reviews={reviews} navigation={navigation} />
     </View>
+});
+
+const styles = StyleSheet.create({
+    addButton: {
+        alignSelf: 'center',
+        marginVertical: 12
+    }
 });
 
 export default Home;
