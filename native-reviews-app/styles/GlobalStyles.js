@@ -38,5 +38,10 @@ export const globalStyles = StyleSheet.create({
         borderColor: '#777',
         borderRadius: 4,
         color: '#f7f7f7'
+    },
+    error: {
+        color: '#d91d54',
+        fontSize: 16,
+        marginBottom: 12
     }
 });

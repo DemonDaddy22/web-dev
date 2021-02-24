@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Keyboard, StyleSheet, TextInput, TouchableWithoutFeedback, View } from 'react-native';
+import { Button, Keyboard, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
 import { Modal, ModalContent, SlideAnimation } from 'react-native-modals';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Formik } from 'formik';
@@ -21,9 +21,12 @@ const FormModal = React.memo(({ modalOpen, setModalOpen, addReview }) => <Modal 
                 <View style={{ ...globalStyles.container, backgroundColor: 'transparent' }}>
                     <Formik initialValues={{ title: '', body: '', rating: 0 }} validationSchema={ReviewSchema} onSubmit={values => addReview(values)}>
                         {props => <View>
-                            <TextInput style={globalStyles.input} placeholderTextColor='#777' placeholder='Review Title' value={props.values.title} onChangeText={props.handleChange('title')} />
-                            <TextInput multiline style={globalStyles.input} placeholderTextColor='#777' placeholder='Review Description' value={props.values.body} onChangeText={props.handleChange('body')} />
-                            <TextInput style={globalStyles.input} placeholderTextColor='#777' placeholder='Rating (1-5)' keyboardType='numeric' value={props.values.rating} onChangeText={props.handleChange('rating')} />
+                            <TextInput style={globalStyles.input} placeholderTextColor='#777' placeholder='Review Title' value={props.values.title} onChangeText={props.handleChange('title')} onBlur={props.handleBlur('title')} />
+                            <Text style={globalStyles.error}>{props.touched.title && props.errors.title}</Text>
+                            <TextInput multiline style={globalStyles.input} placeholderTextColor='#777' placeholder='Review Description' value={props.values.body} onChangeText={props.handleChange('body')} onBlur={props.handleBlur('body')} />
+                            <Text style={globalStyles.error}>{props.touched.body && props.errors.body}</Text>
+                            <TextInput style={globalStyles.input} placeholderTextColor='#777' placeholder='Rating (1-5)' keyboardType='numeric' value={props.values.rating} onChangeText={props.handleChange('rating')} onBlur={props.handleBlur('rating')} />
+                            <Text style={globalStyles.error}>{props.touched.rating && props.errors.rating}</Text>
                             <Button title='SUBMIT' color='#e91d54' onPress={props.handleSubmit} />
                         </View>}
                     </Formik>
@@ -40,7 +43,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     modal: {
-        minHeight: 300,
+        minHeight: 400,
         minWidth: '80%',
         backgroundColor: '#373737'
     }
