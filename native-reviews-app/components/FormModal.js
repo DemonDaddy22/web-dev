@@ -3,7 +3,14 @@ import { Button, Keyboard, StyleSheet, TextInput, TouchableWithoutFeedback, View
 import { Modal, ModalContent, SlideAnimation } from 'react-native-modals';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Formik } from 'formik';
+import * as yup from 'yup';
 import { globalStyles } from '../styles/GlobalStyles';
+
+const ReviewSchema = yup.object({
+    title: yup.string().required().min(3),
+    body: yup.string().required().min(3),
+    rating: yup.string().required().test('isRatingBetween1&5', 'Rating must be between 1 and 5', val => parseInt(val) >= 1 && parseInt(val) <= 5)
+});
 
 const FormModal = React.memo(({ modalOpen, setModalOpen, addReview }) => <Modal visible={modalOpen} onTouchOutside={() => setModalOpen(false)}
     modalAnimation={new SlideAnimation({ slideFrom: 'bottom' })}>
@@ -12,7 +19,7 @@ const FormModal = React.memo(({ modalOpen, setModalOpen, addReview }) => <Modal 
             <View style={styles.modal}>
                 <MaterialIcons name='close' size={24} color='#f7f7f7' style={styles.closeButton} onPress={() => setModalOpen(false)} />
                 <View style={{ ...globalStyles.container, backgroundColor: 'transparent' }}>
-                    <Formik initialValues={{ title: '', body: '', rating: 0 }} onSubmit={values => addReview(values)}>
+                    <Formik initialValues={{ title: '', body: '', rating: 0 }} validationSchema={ReviewSchema} onSubmit={values => addReview(values)}>
                         {props => <View>
                             <TextInput style={globalStyles.input} placeholderTextColor='#777' placeholder='Review Title' value={props.values.title} onChangeText={props.handleChange('title')} />
                             <TextInput multiline style={globalStyles.input} placeholderTextColor='#777' placeholder='Review Description' value={props.values.body} onChangeText={props.handleChange('body')} />
