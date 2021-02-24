@@ -30,5 +30,13 @@ export const globalStyles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    input: {
+        marginBottom: 12,
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#777',
+        borderRadius: 4,
+        color: '#f7f7f7'
     }
 });

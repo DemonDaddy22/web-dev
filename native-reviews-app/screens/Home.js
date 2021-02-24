@@ -17,9 +17,14 @@ const Home = React.memo(({ navigation }) => {
         { title: 'Not So "Final" Fantasy', rating: 3, body: 'important luck bread offer among electricity use lose began nearly company pot past accident property with gain kill tea history government real snake needed', id: getRandomID() },
     ]);
 
+    const addReview = review => {
+        setReviews(prevReviews => [].concat({ ...review, id: getRandomID() }).concat(prevReviews));
+        setModalOpen(false);
+    }
+
     return <View style={globalStyles.container}>
         <MaterialIcons name='add' size={24} color='#f7f7f7' style={styles.addButton} onPress={() => setModalOpen(true)} />
-        <FormModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+        <FormModal modalOpen={modalOpen} setModalOpen={setModalOpen} addReview={addReview} />
         <Reviews reviews={reviews} navigation={navigation} />
     </View>
 });

@@ -15,6 +15,7 @@ export const getRatingsStyles = rating => {
 }
 
 export const getRatingColor = rating => {
+    rating = typeof rating === 'string' ? parseInt(rating) : rating;
     switch (rating) {
         case 1: return '#e72231';
         case 2: return '#db6200';
