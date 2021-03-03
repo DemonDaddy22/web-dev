@@ -24,9 +24,23 @@ const productSchema = new mongoose.Schema({
     categories: [String]
 });
 
+productSchema.methods.addCategory = function (category) {
+    this.categories.push(category);
+    return this.save();
+}
+
 const Product = mongoose.model('Product', productSchema);
 
-const bike = new Product({ name: 'Mountain Bike', price: 749 });
-bike.save()
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+// const bike = new Product({ name: 'Mountain Bike', price: 749 });
+// Product.findOneAndUpdate({ name: 'Offroad bike' }, { price: 599 }, { new: true, useFindAndModify: false, runValidators: true })
+//     .then(data => console.log(data))
+//     .catch(err => console.log(err));
+
+const findProduct = async () => {
+    const product = await Product.findOne({ name: 'Mountain Bike'});
+    console.log(product);
+    await product.addCategory('outdoor');
+    console.log(product);
+}
+
+findProduct();
