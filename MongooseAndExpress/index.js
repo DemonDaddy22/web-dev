@@ -15,4 +15,9 @@ mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true,
         console.log(err);
     });
 
+app.get('/products', async (req, res) => {
+    const products = await Product.find({});
+    res.render('products', { products });
+});
+
 app.listen(3000, () => console.log('> Server started on port 3000'));
