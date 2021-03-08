@@ -3,10 +3,12 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 
+const Product = require('./models/product');
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-mongoose.connect('mongodb://localhost:27017/productApp', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('> Mongo connection established successfully'))
     .catch(err => {
         console.error('> Mongo connection failed');
