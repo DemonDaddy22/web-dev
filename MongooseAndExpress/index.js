@@ -20,4 +20,9 @@ app.get('/products', async (req, res) => {
     res.render('products', { products });
 });
 
+app.get('/products/:id', async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    res.render('product', { product });
+});
+
 app.listen(3000, () => console.log('> Server started on port 3000'));
