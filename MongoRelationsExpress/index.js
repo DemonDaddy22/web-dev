@@ -3,6 +3,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const Product = require('./models/product');
+const Farm = require('./models/farm');
 
 const app = express();
 const categories = ['fruit', 'vegetable', 'dairy'];
