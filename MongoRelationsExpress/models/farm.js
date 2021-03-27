@@ -19,6 +19,6 @@ const FarmSchema = new Schema({
     }]
 });
 
-const Farms = mongoose.model('Farm', FarmSchema);
+const Farm = mongoose.model('Farm', FarmSchema);
 
 module.exports = Farm;

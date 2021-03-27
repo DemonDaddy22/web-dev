@@ -22,6 +22,29 @@ app.use(express.json());
 
 app.listen(3030, () => console.log('> Listing on Port 3030...'));
 
+// FARM ROUTES
+app.get('/farms', async (req, res) => {
+    const farms = await Farm.find({});
+    res.render('farms/index', { farms });
+});
+
+app.get('/farms/new', (req, res) => {
+    res.render('farms/new');
+});
+
+app.post('/farms', async (req, res) => {
+    const { name, city, email } = req.body;
+    const farm = new Farm({ name, city, email });
+    await farm.save();
+    res.redirect(`/farms/${farm._id}`);
+});
+
+app.get('/farms/:id', async (req, res) => {
+    const farm = await Farm.findById(req.params.id);
+    res.render('farms/show', { farm });
+});
+
+// PRODUCT ROUTES
 app.get('/products', async (req, res) => {
     const { category } = req.query;
     if (category) {
