@@ -24,16 +24,14 @@
         <% if (farm?.products?.length) { %>
             <h2>Products</h2>
             <% for (let product of farm.products) { %>
-                <a href="/farms/<%=farm._id%>/products/<%=product.id%>">
+                <a href="/products/<%=product.id%>">
                     <%= product?.name %>
                 </a>
                 <% } %>
                     <% } %>
+                        <br /><br />
                         <a href="/farms">All Farms</a>
-                        <a href="/farms/<%=farm._id%>/edit">Edit Farm</a>
-                        <form action="/farms/<%=farm._id%>?_method=DELETE" method="POST">
-                            <button>Delete</button>
-                        </form>
+                        <a href="/farms/<%=farm._id%>/products/new">Add Product</a>
 
     </body>
 
