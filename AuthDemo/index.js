@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const session = require('express-session');
 const User = require('./models/user');
 
 mongoose
@@ -15,6 +16,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(session({ secret: 'authsecret' }));
 
 app.get('/', (req, res) => {
     res.send('HOME PAGE');
@@ -29,6 +31,7 @@ app.post('/register', async (req, res) => {
     const hash = await bcrypt.hash(password, 12);
     const user = new User({ username, password: hash });
     await user.save();
+    req.session.userId = user._id;
     res.redirect('/');
 });
 
@@ -40,11 +43,20 @@ app.post('/login', async (req, res) => {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
     const isAuthenticated = await bcrypt.compare(password, user.password);
-    res.send(isAuthenticated ? 'YAY! Succesfully signed in!' : `That's a bummer :( Try again please`);
+    if (isAuthenticated) {
+        req.session.userId = user._id;
+        res.redirect('/secret');
+    } else res.redirect('/login');
+});
+
+app.post('/logout', (req, res) => {
+    req.session.userId = null;
+    res.redirect('/login');
 });
 
 app.get('/secret', (req, res) => {
-    res.send('Cannot access this unless you are authenticated!');
+    if (!req.session.userId) res.redirect('/');
+    else res.render('secret');
 });
 
 app.listen(3030, () => console.log('> Serving on PORT 3030...'));
