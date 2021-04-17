@@ -32,6 +32,17 @@ app.post('/register', async (req, res) => {
     res.redirect('/');
 });
 
+app.get('/login', (req, res) => {
+    res.render('login');
+});
+
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+    const isAuthenticated = await bcrypt.compare(password, user.password);
+    res.send(isAuthenticated ? 'YAY! Succesfully signed in!' : `That's a bummer :( Try again please`);
+});
+
 app.get('/secret', (req, res) => {
     res.send('Cannot access this unless you are authenticated!');
 });
