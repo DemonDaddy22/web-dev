@@ -18,6 +18,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session({ secret: 'authsecret' }));
 
+const isLoggedIn = (req, res, next) => {
+    if (!req.session.userId) return res.redirect('/login');
+    next();
+}
+
 app.get('/', (req, res) => {
     res.send('HOME PAGE');
 });
@@ -28,8 +33,7 @@ app.get('/register', (req, res) => {
 
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
-    const hash = await bcrypt.hash(password, 12);
-    const user = new User({ username, password: hash });
+    const user = new User({ username, password });
     await user.save();
     req.session.userId = user._id;
     res.redirect('/');
@@ -41,10 +45,9 @@ app.get('/login', (req, res) => {
 
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    const user = await User.findOne({ username });
-    const isAuthenticated = await bcrypt.compare(password, user.password);
-    if (isAuthenticated) {
-        req.session.userId = user._id;
+    const foundUser = await User.findAndValidate(username, password);
+    if (foundUser) {
+        req.session.userId = foundUser._id;
         res.redirect('/secret');
     } else res.redirect('/login');
 });
@@ -54,9 +57,8 @@ app.post('/logout', (req, res) => {
     res.redirect('/login');
 });
 
-app.get('/secret', (req, res) => {
-    if (!req.session.userId) res.redirect('/');
-    else res.render('secret');
+app.get('/secret', isLoggedIn, (req, res) => {
+    res.render('secret');
 });
 
 app.listen(3030, () => console.log('> Serving on PORT 3030...'));
