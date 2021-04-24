@@ -1,14 +1,44 @@
+import { motion } from 'framer-motion';
 import React from 'react';
+
+const containerVariants = {
+    hidden: {
+        opacity: 0,
+        x: '-50vw',
+    },
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition: {
+            mass: 0.4,
+            type: 'spring',
+            damping: 8,
+            when: 'beforeChildren',
+            staggerChildren: 0.4,
+        },
+    },
+};
+
+const opacityVariants = {
+    hidden: {
+        opacity: 0,
+    },
+    visible: {
+        opacity: 1,
+    },
+};
 
 const Order = ({ pizza }) => {
     return (
-        <div className='container order'>
+        <motion.div className='container order' variants={containerVariants} initial='hidden' animate='visible'>
             <h2>Thank you for your order :)</h2>
-            <p>You ordered a {pizza.base} pizza with:</p>
-            {pizza.toppings.map(topping => (
-                <div key={topping}>{topping}</div>
-            ))}
-        </div>
+            <motion.p variants={opacityVariants}>You ordered a {pizza.base} pizza with:</motion.p>
+            <motion.div variants={opacityVariants}>
+                {pizza.toppings.map(topping => (
+                    <div key={topping}>{topping}</div>
+                ))}
+            </motion.div>
+        </motion.div>
     );
 };
 

@@ -7,7 +7,12 @@ const Home = () => {
         <motion.div className='home container' transition={{ delay: 1 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <h2>Welcome to Pizza Joint</h2>
             <Link to='/base'>
-                <motion.button animate={{}}>Create Your Pizza</motion.button>
+                <motion.button
+                    transition={{ duration: 0.2 }}
+                    whileHover={{ scale: 1.1, textShadow: '0 0 4px rgba(255, 255, 255, 0.75)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.75)' }}
+                >
+                    Create Your Pizza
+                </motion.button>
             </Link>
         </motion.div>
     );
