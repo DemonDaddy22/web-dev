@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -7,7 +7,7 @@ const buttonVariants = {
         x: [0, -20, 20, -10, 10, 0],
         transition: {
             delay: 2,
-            duration: 0.5
+            duration: 0.5,
         },
     },
     hover: {
@@ -20,10 +20,28 @@ const buttonVariants = {
     },
 };
 
+const containerVariants = {
+    hidden: {
+        opacity: 0,
+    },
+    visible: {
+        opacity: 1,
+        transition: {
+            delay: 1,
+        },
+    },
+    exit: {
+        x: '-100vw',
+        transition: {
+            ease: 'easeInOut',
+        },
+    },
+};
+
 const Home = () => {
     return (
-        <motion.div className='home container' transition={{ delay: 1 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <h2>Welcome to Pizza Joint</h2>
+        <motion.div className='home container' variants={containerVariants} initial='hidden' animate='visible' exit='exit'>
+            <h2 exit={{ opacity: 0, y: '-25vw' }}>Welcome to Pizza Joint</h2>
             <Link to='/base'>
                 <motion.button variants={buttonVariants} animate='visible' whileHover='hover'>
                     Create Your Pizza
