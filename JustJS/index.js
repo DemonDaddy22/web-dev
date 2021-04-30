@@ -43,25 +43,59 @@ console.log(sum(1, 2, 3, 4, 5));
 const curriedSum = currier(sum, 1, 2, 3);
 console.log(curriedSum(5, 4));
 
-
 // DEBOUNCE FUNCTION TO OPTIMISE API CALLS
 
 const getResults = (q = '') => {
-    console.log(`Fetching results for ${q}`);
-}
+    console.log(`Fetching results for ${q}...`);
+};
 
-const debounce = function (func, delay) {
-    console.log(this);
-    return function() {
-        func();
-    }
+function debounce(func, delay) {
+    const context = this;
+    let timeout;
+    return function () {
+        const args = [...arguments];
+        clearTimeout(timeout); // cancels the previous function call if time taken to change input is less than delay
+        timeout = setTimeout(() => func.apply(context, args), delay); // func is only called when time between 2 consecutive input changes is more than delay
+    };
 }
 
 // IIFE to hide queried element in order to prevent its misuse
 
-(function() {
+(function () {
     const queryInput = document.querySelector('#query');
-    
+
     // executes the function for every key stroke, which can cause performance bottlenecks
-    queryInput.addEventListener('keyup', e => debounce(getResults, 300)(e.target.value));
-}())
+    // queryInput.addEventListener('keyup', e => getResults(e.target.value));
+
+    // using a debounced variant prevents unnecessary function calls when input changes quickly
+    const debouncedSearch = debounce.call(this, getResults, 300);
+    queryInput.addEventListener('keyup', e => debouncedSearch(e.target.value));
+})();
+
+// THROTTLE FUNCTION CALLS WHEN FUNCTION IS INVOKED MANY TIMES AND WE ARE CONCERNED WITH THE INTERMEDIATE STATES
+
+const handleResize = e => {
+    const { innerHeight, innerWidth } = e.target;
+    if (innerHeight > innerWidth) console.log(`That has to be a mobile or a tab!`);
+    else console.log(`Bet that ain't no mobile/tab`);
+};
+
+const throttle = function (func, delay) {
+    const context = this;
+    let canCallFunction = true; // this flag controls whether function can be called again or not
+    return function () {
+        if (canCallFunction) {
+            const args = [...arguments];
+            func.apply(context, args);
+            canCallFunction = false;
+            setTimeout(() => {
+                canCallFunction = true; // sets to true after delay, so that func can be called again after delay amount of time
+            }, delay);
+        }
+    };
+};
+
+(function () {
+    const throttledResizing = throttle(handleResize, 100);
+    window.addEventListener('resize', throttledResizing);
+})();
