@@ -10,3 +10,5 @@ To view/use any of the challenge in your browser, simply fork this project, open
 List of challenges added so far:
 
 -   [Comparing Cases](/JustJS/ComparingCases) -> Implement a function which takes 2 character parameters and returns boolean value indicating whether the parameters have same casing or not.
+
+-   [Remove Delimiter](/JustJS/RemoveDelimiter) -> Implement a function which takes a string parameter and returns a camel cased string after removing all the dash or underscore delimiters in the initial string.
