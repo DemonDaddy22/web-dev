@@ -12,18 +12,18 @@ body {
     padding: 5rem;
     flex-direction: column;
     justify-content: center;
-    background-color: #472E47;
+    background-color: #001155;
     font-family: 'Courier New', Courier, monospace;
 }
 
 h1 {
-    color: #F3B704;
+    color: #EE888B;
     letter-spacing: 0.25px;
     font-size: 4rem;
 }
 
 h4 {
-    color: #F3B704;
+    color: #EE888B;
     width: 50%;
     margin-top: 1rem;
     font-weight: normal;

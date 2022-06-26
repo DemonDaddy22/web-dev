@@ -1,6 +1,6 @@
 /**
- * Implement a function which takes 2 arguments which are characters
- * and returns boolean value indicating whether the arguments have same casing
+ * Implement a function which takes 2 parameters which are characters
+ * and returns boolean value indicating whether the parameters have same casing
  * eg. a = 'a', b = 'd', returns true
  * eg. a = 'A', b = 'b', returns false
  */

@@ -9,4 +9,4 @@ To view/use any of the challenge in your browser, simply fork this project, open
 
 List of challenges added so far:
 
--   [Comparing Cases](/JustJS/ComparingCases) -> Implement a function which takes 2 character arguments and returns boolean value indicating whether the arguments have same casing or not.
+-   [Comparing Cases](/JustJS/ComparingCases) -> Implement a function which takes 2 character parameters and returns boolean value indicating whether the parameters have same casing or not.
