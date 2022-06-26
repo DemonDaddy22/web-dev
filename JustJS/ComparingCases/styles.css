@@ -1,0 +1,22 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #472E47;
+}
+
+h1 {
+    color: #F3B704;
+    letter-spacing: 0.25px;
+    font-size: 3rem;
+    font-family: 'Courier New', Courier, monospace;
+}
