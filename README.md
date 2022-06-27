@@ -12,3 +12,5 @@ List of challenges added so far:
 -   [Comparing Cases](/JustJS/ComparingCases) -> Implement a function which takes 2 character parameters and returns boolean value indicating whether the parameters have same casing or not.
 
 -   [Remove Delimiter](/JustJS/RemoveDelimiter) -> Implement a function which takes a string parameter and returns a camel cased string after removing all the dash or underscore delimiters in the initial string.
+
+-   [Facebook Strings](/JustJS/FacebookStrings) -> Implement a function that takes an array of name strings, and returns a string formatted like Facebook's likes system.
