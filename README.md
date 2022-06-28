@@ -14,3 +14,5 @@ List of challenges added so far:
 -   [Remove Delimiter](/JustJS/RemoveDelimiter) -> Implement a function which takes a string parameter and returns a camel cased string after removing all the dash or underscore delimiters in the initial string.
 
 -   [Facebook Strings](/JustJS/FacebookStrings) -> Implement a function that takes an array of name strings, and returns a string formatted like Facebook's likes system.
+
+-   [Bracket Pattern](/JustJS/BracketPattern) -> Implement a function that takes a string containing brackets, braces and/or parentheses, and returns a boolean value indicating whether the input pattern is balanced or not.
