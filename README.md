@@ -16,3 +16,5 @@ List of challenges added so far:
 -   [Facebook Strings](/JustJS/FacebookStrings) -> Implement a function that takes an array of name strings, and returns a string formatted like Facebook's likes system.
 
 -   [Bracket Pattern](/JustJS/BracketPattern) -> Implement a function that takes a string containing brackets, braces and/or parentheses, and returns a boolean value indicating whether the input pattern is balanced or not.
+
+-   [Split Into Pairs](/JustJS/SplitIntoPairs) -> Implement a function that takes a string parameter, and returns an array containing pairs of characters. If last item has only 1 character, complete it with an underscore.
