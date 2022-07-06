@@ -47,3 +47,28 @@ const reverseString = (str = '') => {
     /* Approach 3 - using recursion */
     return !str?.length ? str : reverseString(str.slice(1)) + str.charAt(0);
 };
+
+/**
+ * 5. Write a program to reverse the input string by words, also reverse the words in place
+ */
+function StringReverse (str = '') {
+    this.str = str;
+    this.reverse = function () {
+        return this.str.split(/\s/).reverse().join(' ');
+    };
+    this.reverseWordsInPlace = function () {
+        return this.str.split(/\s/).map(word => word.split('').reverse().join('')).join(' ');
+    };
+};
+
+/**
+ * 6. Reverse the input integer number
+ */
+function reverseInteger (num = 0) {
+    let reverse = 0;
+    while (num > 0) {
+        reverse = reverse * 10 + (num % 10);
+        num = Math.floor(num / 10);
+    }
+    return reverse;
+}
