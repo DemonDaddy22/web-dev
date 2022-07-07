@@ -72,3 +72,37 @@ function reverseInteger (num = 0) {
     }
     return reverse;
 }
+
+/**
+ * 7. Convert 12 hours format to 24 hours format
+ */
+const convertTo24HrsFormat = (dateStr = '') => {
+    let meridianIndex = dateStr.indexOf('AM');
+    const isAM = meridianIndex >= 0;
+    if (meridianIndex < 0) {
+        meridianIndex = dateStr.indexOf('PM');
+    }
+    const [hours, minutes] = dateStr.slice(0, meridianIndex).split(':');
+    return isAM
+        ? `${String(hours < 12 ? hours : hours - 12).padStart(2, '0')}:${minutes.padStart(2, '0')}`
+        : `${String(hours < 12 ? Number(hours) + 12 : hours).padStart(2, '0')}:${minutes.padStart(2, '0')}`;
+};
+
+/**
+ * 8. Write a function which accepts a string parameter and returns the count of characters between the first and last 'X' character
+ */
+const getTheGapX = (str = '') => {
+    const firstIndexOfX = str.indexOf('X');
+    const lastIndexOfX = str.lastIndexOf('X');
+
+    if (firstIndexOfX < 0 || lastIndexOfX < 0 || firstIndexOfX === lastIndexOfX) return -1;
+    return lastIndexOfX - firstIndexOfX;
+}
+
+/**
+ * 9. Write a function which truncates the input string
+ */
+const truncateString = (str = '', len = 0) => {
+    if (typeof str !== 'string' || typeof len !== 'number' || !str.length || len < 3) return str;
+    return str.length <= len ? str : `${str.slice(0, len - 3)}...`;
+};
