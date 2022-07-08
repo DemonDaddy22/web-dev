@@ -106,3 +106,14 @@ const truncateString = (str = '', len = 0) => {
     if (typeof str !== 'string' || typeof len !== 'number' || !str.length || len < 3) return str;
     return str.length <= len ? str : `${str.slice(0, len - 3)}...`;
 };
+
+/**
+ * 10. Write a function which returns a list of elements containing at least one character as digit
+ */
+const numInStr = (list = []) => {
+    if (!Array.isArray(list) || !list.length) return [];
+
+    return list.filter(el => (
+        typeof el === 'string' && /[0-9]/.test(el)
+    ));
+};
