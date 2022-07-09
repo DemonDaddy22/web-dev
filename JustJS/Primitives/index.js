@@ -9,8 +9,8 @@ const swapNums = (num1, num2) => {
     num1 = num1 - num2;
     */
 
-   /* Approach 2 */
-   [num1, num2] = [num2, num1];
+    /* Approach 2 */
+    [num1, num2] = [num2, num1];
     console.log({ num1, num2 });
 };
 
@@ -51,7 +51,7 @@ const reverseString = (str = '') => {
 /**
  * 5. Write a program to reverse the input string by words, also reverse the words in place
  */
-function StringReverse (str = '') {
+function StringReverse(str = '') {
     this.str = str;
     this.reverse = function () {
         return this.str.split(/\s/).reverse().join(' ');
@@ -64,7 +64,7 @@ function StringReverse (str = '') {
 /**
  * 6. Reverse the input integer number
  */
-function reverseInteger (num = 0) {
+function reverseInteger(num = 0) {
     let reverse = 0;
     while (num > 0) {
         reverse = reverse * 10 + (num % 10);
@@ -116,4 +116,57 @@ const numInStr = (list = []) => {
     return list.filter(el => (
         typeof el === 'string' && /[0-9]/.test(el)
     ));
+};
+
+/**
+ * 11. Create a regular expression to validate if the given input is valid Indian mobile number or not
+ */
+const validateMobile = (number = '') => {
+    const mobileRegex = /^((\+91|0)\s?|(\+91-))?[1-9]\d{9}$/;
+    return mobileRegex.test(number);
+};
+
+/**
+ * 12. Write a function which checks if a given search text is present either in the beginning of the first name or the second name
+ */
+const validateName = (fullName = '', pattern = '') => {
+    const [firstName, secondName] = fullName.split(/\s+/);
+    return firstName.toLowerCase().startsWith(pattern.toLowerCase()) || secondName.toLowerCase().startsWith(pattern.toLowerCase());
+};
+
+/**
+ * 13. Write a function to chop a string into chunks of a given length
+ */
+const stringChop = (str = '', num = 0) => {
+    if (!num) return str;
+    const stringChunks = [];
+    for (let i = 0; i < str.length; i += num) {
+        stringChunks.push(str.slice(i, i + num));
+    }
+    return stringChunks;
+};
+
+/**
+ * 14. Write a function to remove all the vowels from input string
+ */
+const removeVowels = (str = '') => (
+    str.replace(/[aeiou]/gi, '')
+);
+
+/**
+ * 15. Create a function which returns random hex color code
+ */
+const getRandomHexCode = () => {
+    const getColorVal = () => Math.round(0xFF * Math.random()).toString(16).padStart(2, '0');
+    return `#${getColorVal()}${getColorVal()}${getColorVal()}`;
+};
+
+/**
+ * 16. Write a function which accepts two valid dates and returns the difference between them as number of days
+ */
+const getDaysBetweenDates = (dateStr1 = null, dateStr2 = null) => {
+    const date1 = new Date(dateStr1);
+    const date2 = new Date(dateStr2);
+    const diff = Math.abs(date1 - date2);
+    return Math.floor(diff / (1000 * 60 * 60 * 24));
 };
