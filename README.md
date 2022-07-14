@@ -9,12 +9,16 @@ To view/use any of the challenge in your browser, simply fork this project, open
 
 List of challenges added so far:
 
--   [Comparing Cases](/JustJS/ComparingCases) -> Implement a function which takes 2 character parameters and returns boolean value indicating whether the parameters have same casing or not.
+- [Comparing Cases](/JustJS/ComparingCases) -> Implement a function which takes 2 character parameters and returns boolean value indicating whether the parameters have same casing or not.
 
--   [Remove Delimiter](/JustJS/RemoveDelimiter) -> Implement a function which takes a string parameter and returns a camel cased string after removing all the dash or underscore delimiters in the initial string.
+- [Remove Delimiter](/JustJS/RemoveDelimiter) -> Implement a function which takes a string parameter and returns a camel cased string after removing all the dash or underscore delimiters in the initial string.
 
--   [Facebook Strings](/JustJS/FacebookStrings) -> Implement a function that takes an array of name strings, and returns a string formatted like Facebook's likes system.
+- [Facebook Strings](/JustJS/FacebookStrings) -> Implement a function that takes an array of name strings, and returns a string formatted like Facebook's likes system.
 
--   [Bracket Pattern](/JustJS/BracketPattern) -> Implement a function that takes a string containing brackets, braces and/or parentheses, and returns a boolean value indicating whether the input pattern is balanced or not.
+- [Bracket Pattern](/JustJS/BracketPattern) -> Implement a function that takes a string containing brackets, braces and/or parentheses, and returns a boolean value indicating whether the input pattern is balanced or not.
 
--   [Split Into Pairs](/JustJS/SplitIntoPairs) -> Implement a function that takes a string parameter, and returns an array containing pairs of characters. If last item has only 1 character, complete it with an underscore.
+- [Split Into Pairs](/JustJS/SplitIntoPairs) -> Implement a function that takes a string parameter, and returns an array containing pairs of characters. If last item has only 1 character, complete it with an underscore.
+
+- [Primitives](/JustJS/Primitives) -> Implement numerous primitive level challenges from [Sadanand Pai's](https://github.com/sadanandpai/javascript-code-challenges/blob/main/challenges/primitives-challenges.md) GitHub
+
+- [Functions](/JustJS/Functions) -> Implement numerous function challenges from [Sadanand Pai's](https://github.com/sadanandpai/javascript-code-challenges/blob/main/challenges/functions-challenges.md) GitHub
