@@ -32,8 +32,51 @@ Function.prototype.myBind = function () {
     const ctx = args[0];
     const fn = this;
 
-    return function () {
+    const noop = function () {};
+    const bound = function () {
         const newArgs = [].slice.apply(arguments);
-        return fn.apply(ctx, [...args.slice(1), ...newArgs]);
+        return fn.apply((
+            this instanceof noop && ctx ? this : ctx
+        ), [...args.slice(1), ...newArgs]);
+    };
+
+    noop.prototype = this.prototype;
+    bound.prototype = new noop();
+    return bound;
+};
+
+/**
+ * 4. Write a polyfill for soft bind. It is a function which will create a function
+ * bounded to the context like bind, but can be overridden when the context is set explicitly
+ */
+Function.prototype.softBind = function () {
+    const args = [].slice.apply(arguments);
+    const ctx = args[0];
+    const fn = this;
+
+    const bound = function () {
+        const newArgs = [].slice.apply(arguments);
+        const newCtx = !this || this === window ? ctx : this;
+        return fn.apply(newCtx, [...args.slice(1), ...newArgs]);
+    };
+
+    bound.prototype = Object.create(fn.prototype);
+    return bound;
+};
+
+/**
+ * 5. Write a function which evaluates multiply(a)(b) and returns product of a and b
+ */
+const multiply = (a) => (b) => a * b;
+
+/**
+ * 6. Create a function which takes another function as an argument and makes it eligible for currying or partial application
+ */
+const curryFunc = (fn) => {
+    return function curry (...args) {
+        if (fn.length <= args.length) return fn.apply(this, args);
+        else return function (...newArgs) {
+            return curry.apply(this, args.concat(newArgs));
+        }
     };
 };
