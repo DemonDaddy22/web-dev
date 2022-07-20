@@ -124,3 +124,39 @@ function sampling (fn, count, ctx) {
         counter = 0;
     };
 };
+
+/**
+ * 10. Write a singleton function to create an object only once
+ */
+const Singleton = (function () {
+    let instance;
+
+    function createInstance (data) {
+        let newInstance = new Object(data);
+        return newInstance;
+    }
+
+    function getInstance (data) {
+        if (!instance) {
+            instance = createInstance(data);
+        }
+        return instance;
+    }
+
+    return {
+        getInstance,
+    };
+})();
+
+/**
+ * 11. Design a function with toggle functionality for given list of inputs
+ * where toggle function accepts list of values to be toggled upon
+ */
+const toggle = (...values) => {
+    let index;
+
+    return () => {
+        index = isNaN(index) ? 0 : (index + 1) % values.length;
+        return values[index];
+    };
+};
