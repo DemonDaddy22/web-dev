@@ -160,3 +160,9 @@ const toggle = (...values) => {
         return values[index];
     };
 };
+
+/**
+ * 12. Design a function which can keep recieving the arguments on each
+ * function call and returns the sum when no argument is passed
+ */
+const sum = (a) => (b) => !isNaN(b) ? a : sum(a + b);
