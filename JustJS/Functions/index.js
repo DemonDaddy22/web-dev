@@ -166,3 +166,31 @@ const toggle = (...values) => {
  * function call and returns the sum when no argument is passed
  */
 const sum = (a) => (b) => !isNaN(b) ? a : sum(a + b);
+
+/**
+ * 13. Create a range function which returns an array for the provided inputs as start and end
+ */
+const range = (start, end) => {
+    if (isNaN(end)) {
+        return (newEnd) => range(start, newEnd)
+    }
+
+    return end < start
+        ? []
+        : new Array(end - start + 1).fill(0).map((_) => start++);
+};
+
+/**
+ * 14. Write a function which takes a function as an argument to achieve memoization
+ */
+const memoize = (fn) => {
+    const store = {};
+
+    return (...args) => {
+        const key = JSON.stringify(args);
+        if (!store[key]) {
+            store[key] = fn(...args);
+        }
+        return store[key];
+    };
+};
