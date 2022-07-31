@@ -162,7 +162,7 @@ const toggle = (...values) => {
 };
 
 /**
- * 12. Design a function which can keep recieving the arguments on each
+ * 12. Design a function which can keep receiving the arguments on each
  * function call and returns the sum when no argument is passed
  */
 const sum = (a) => (b) => !isNaN(b) ? a : sum(a + b);
@@ -193,4 +193,39 @@ const memoize = (fn) => {
         }
         return store[key];
     };
+};
+
+/**
+ * 15. Create an interface for a function such that whenever a
+ * function is triggered the system should log the time.
+ * Do not modify the function code.
+ */
+ function generateSecretObject (key, value) {
+    return { [key]: value };
+}
+
+// helpful in creating wrapper utils which can do the logging part
+generateSecretObject = new Proxy(generateSecretObject, {
+    apply(target, ctx, args) {
+        console.log(`${new Date().toUTCString()}: ${target.name} is triggered with ${JSON.stringify(args)}`);
+        return target.apply(ctx, args);
+    }
+});
+
+/**
+ * 16. Create an interface exposing subscribe and publish functionality,
+ * which allows publishing data which in turn invokes all the subscribers with the data
+ */
+const pubSub = () => {
+    const subscribers = [];
+
+    const publish = (data) => {
+        subscribers.forEach((sub) => sub(data));
+    }
+
+    const subscribe = (fn) => {
+        subscribers.push(fn);
+    }
+
+    return { publish, subscribe };
 };
