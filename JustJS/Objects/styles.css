@@ -1,0 +1,52 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    padding: 5rem;
+    flex-direction: column;
+    justify-content: center;
+    background: #2193b0;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    color: #142D4A;
+    letter-spacing: 0.25px;
+    font-size: 4rem;
+}
+
+h4 {
+    color: #142D4A;
+    width: 50%;
+    margin-top: 1rem;
+    font-weight: normal;
+    letter-spacing: 0.1px;
+}
+
+a {
+    color: inherit;
+    transition: all 0.25s ease;
+}
+
+a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    text-shadow: 1px 4px 6px rgba(0, 0, 0, 0.25);
+    color: #081627;
+}
