@@ -22,3 +22,5 @@ List of challenges added so far:
 - [Primitives](/JustJS/Primitives) -> Implement numerous primitive level challenges from [Sadanand Pai's](https://github.com/sadanandpai/javascript-code-challenges/blob/main/challenges/primitives-challenges.md) GitHub
 
 - [Functions](/JustJS/Functions) -> Implement numerous function challenges from [Sadanand Pai's](https://github.com/sadanandpai/javascript-code-challenges/blob/main/challenges/functions-challenges.md) GitHub
+
+- [Objects](/JustJS/Objects) -> Implement numerous objects challenges from [Sadanand Pai's](https://github.com/sadanandpai/javascript-code-challenges/blob/main/challenges/objects-challenges.md) GitHub
