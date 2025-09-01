@@ -33,7 +33,7 @@ const deepCloneUtils = (function() {
             };
         }, {});
     };
-    
+
     function deepCloneArray (arr = []) {
         if (!Array.isArray(arr)) return obj;
         return arr.reduce((accu, curr) => {
@@ -43,7 +43,7 @@ const deepCloneUtils = (function() {
                     ? curr
                     : !Array.isArray(curr)
                         ? deepCloneObject(curr)
-                        : deepCloneArray(arr) 
+                        : deepCloneArray(arr)
             ];
         }, []);
     };
